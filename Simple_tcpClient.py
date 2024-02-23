@@ -32,6 +32,7 @@ print ("K : ", k)
 
 while True:
     sentence = input("Message: ")
+
     if(sentence == ""):
         break
 
@@ -40,9 +41,6 @@ while True:
     modifiedSentence = clientSocket.recv(1024)
     received = str(modifiedSentence, "utf-8")
     print ("Received from Make Upper Case Server: ", decriptar(received, int(k)))
-
-    
-    
 
 clientSocket.close()
 

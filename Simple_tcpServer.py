@@ -31,11 +31,14 @@ print('K: ', K)
 connectionSocket.send(bytes(str(R2),"utf-8"))
 
 while True:
-    print("\nWaiting for message:\n")
+    print("Waiting for message")
     sentence = connectionSocket.recv(65000)
     received = str(sentence,"utf-8")
-    print("Received: ", received, "\n Decriptar:",decriptar(received, int(K)));
-    connectionSocket.send(bytes(received,"utf-8"))
+    if(received == ""):
+        break
+    textToSend = decriptar(received, int(K)).upper()
+    print("Received: ", received, "\nDecriptar:",decriptar(received, int(K)));
+    connectionSocket.send(bytes(encriptar(textToSend, int(K)),"utf-8"))
     print ("Sent back to Client: ", received)
 
 connectionSocket.close()
